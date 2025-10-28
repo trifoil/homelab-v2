@@ -25,7 +25,7 @@ echo "Docker installed ..."
 echo "Proceeding to Dockge"
 
 # Start the Server
-docker compose up -d
+docker compose up -p "dockge" -d
 # If you are using docker-compose V1 or Podman
 # docker-compose up -d
 

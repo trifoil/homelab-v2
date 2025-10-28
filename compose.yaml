@@ -4,20 +4,29 @@ services:
     container_name: dockge
     restart: unless-stopped
     ports:
-      # Host Port : Container Port
       - 5001:5001
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /storage/dockge/data:/app/data
-        
-      # If you want to use private registries, you need to share the auth file with Dockge:
-      # - /root/.docker/:/root/.docker
-
-      # Stacks Directory
-      # ⚠️ READ IT CAREFULLY. If you did it wrong, your data could end up writing into a WRONG PATH.
-      # ⚠️ 1. FULL path only. No relative path (MUST)
-      # ⚠️ 2. Left Stacks Path === Right Stacks Path (MUST)
       - /storage/dockge/stacks:/opt/stacks
     environment:
-      # Tell Dockge where is your stacks directory
       - DOCKGE_STACKS_DIR=/opt/stacks
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower(dockge)
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /storage/dockge/watchtowerr:/var/lib/watchtower
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_REVIVE_STOPPED=false
+      - WATCHTOWER_POLL_INTERVAL=3600  # Check every hour
+    command:
+      - --interval
+      - "3600"
+      - dockge  # Only watch and update the dockge container

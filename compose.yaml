@@ -16,7 +16,7 @@ services:
 
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower(dockge)
+    container_name: watchtower-dockge
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -29,4 +29,4 @@ services:
     command:
       - --interval
       - "3600"
-      - dockge  # Only watch and update the dockge container
+      - --label-enable  # Only watch and update the dockge container

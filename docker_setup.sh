@@ -22,11 +22,32 @@ sudo systemctl enable docker
 sudo systemctl status docker
 
 echo "Docker installed ..."
-echo "Proceeding to Dockge"
+
+# Setup storage directories
+echo "Setting up storage directories..."
+sudo mkdir -p /storage/primary/traefik
+sudo mkdir -p /storage/dockge/{data,stacks,watchtower}
+sudo mkdir -p /storage/secondary
+
+# Setup Traefik
+echo "Setting up Traefik..."
+sudo bash setup_traefik.sh
 
 # Start the Server
+echo "Starting services..."
 docker compose --project-name "dockge" up -d
-# If you are using docker-compose V1 or Podman
-# docker-compose up -d
 
-read -n 1 -s -r -p "Done. Press any key to continue..."
+echo ""
+echo "=============================================="
+echo "Setup complete!"
+echo ""
+echo "Access the services at:"
+echo "  - Traefik Dashboard: http://localhost:8080"
+echo "  - Dockge: http://localhost:5001"
+echo ""
+echo "After DNS is configured, access via:"
+echo "  - Traefik: https://traefik.docker.localhost"
+echo "  - Dockge: https://dockge.docker.localhost"
+echo "=============================================="
+
+read -n 1 -s -r -p "Press any key to continue..."

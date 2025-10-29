@@ -22,7 +22,7 @@ the storage has to be in /storage/primary/<servicename>
 - Services can be accessed at:
   - Traefik Dashboard: `http://localhost:8080`
   - Dockge: `http://dockge.docker.localhost` or `http://localhost:5001`
-  - Portainer: `http://portainer.docker.localhost` or `http://localhost:9000`
+  - Portainer: `https://localhost:9443` (default) or `http://portainer.docker.localhost` / `http://localhost:9000`
 
 
 ```sh

@@ -51,10 +51,12 @@ services:
     networks:
       - proxy
     ports:
+      - 9443:9443
       - 9000:9000
+      - 8000:8000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /storage/primary/portainer/data:/data
+      - /storage/primary/portainer/data:/data:z
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.enable=true"

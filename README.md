@@ -11,6 +11,7 @@ contains :
 |:--:|:--:|:--:|
 |Traefik|80, 443, 8080|Reverse proxy and load balancer with HTTPS support|
 |Dockge|5001|Docker compose management UI|
+|Portainer|9000|Docker management UI (logs, shells, debug) |
 |Watchtower|N/A|Automatic container updates|
 
 the storage has to be in /storage/primary/<servicename>
@@ -23,6 +24,7 @@ the storage has to be in /storage/primary/<servicename>
 - Services can be accessed at:
   - Traefik Dashboard: `https://traefik.docker.localhost`
   - Dockge: `https://dockge.docker.localhost`
+  - Portainer: `https://portainer.docker.localhost` or `http://localhost:9000`
 
 
 ```sh

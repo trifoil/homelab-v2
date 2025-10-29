@@ -26,6 +26,7 @@ echo "Docker installed ..."
 # Setup storage directories
 echo "Setting up storage directories..."
 sudo mkdir -p /storage/primary/traefik
+sudo mkdir -p /storage/primary/portainer/data
 sudo mkdir -p /storage/dockge/{data,stacks,watchtower}
 sudo mkdir -p /storage/secondary
 

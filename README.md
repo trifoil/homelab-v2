@@ -12,6 +12,7 @@ contains :
 |Traefik|80, 8080|Reverse proxy and load balancer (HTTP in LAN)|
 |Dockge|5001|Docker compose management UI|
 |Portainer|9000|Docker management UI (logs, shells, debug) |
+|FileBrowser|8086|Web file manager over `/storage`|
 |Watchtower|N/A|Automatic container updates|
 
 the storage has to be in /storage/primary/<servicename>
@@ -23,6 +24,7 @@ the storage has to be in /storage/primary/<servicename>
   - Traefik Dashboard: `http://localhost:8080`
   - Dockge: `http://dockge.docker.localhost` or `http://localhost:5001`
   - Portainer: `https://localhost:9443` (default) or `http://portainer.docker.localhost` / `http://localhost:9000`
+  - FileBrowser: `http://filebrowser.docker.localhost` or `http://localhost:8086`
 
 
 ```sh

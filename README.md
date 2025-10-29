@@ -9,22 +9,20 @@ contains :
 
 |Application|Port|Description|
 |:--:|:--:|:--:|
-|Traefik|80, 443, 8080|Reverse proxy and load balancer with HTTPS support|
+|Traefik|80, 8080|Reverse proxy and load balancer (HTTP in LAN)|
 |Dockge|5001|Docker compose management UI|
 |Portainer|9000|Docker management UI (logs, shells, debug) |
 |Watchtower|N/A|Automatic container updates|
 
 the storage has to be in /storage/primary/<servicename>
 
-**Traefik Configuration:**
-- HTTP (port 80) redirects to HTTPS
-- HTTPS (port 443) with Let's Encrypt support
+**Traefik Configuration (HTTP-only):**
+- HTTP served on port 80 (no HTTPS, no TLS)
 - Dashboard accessible on port 8080
-- Self-signed certificates automatically generated during setup
 - Services can be accessed at:
-  - Traefik Dashboard: `https://traefik.docker.localhost`
-  - Dockge: `https://dockge.docker.localhost`
-  - Portainer: `https://portainer.docker.localhost` or `http://localhost:9000`
+  - Traefik Dashboard: `http://localhost:8080`
+  - Dockge: `http://dockge.docker.localhost` or `http://localhost:5001`
+  - Portainer: `http://portainer.docker.localhost` or `http://localhost:9000`
 
 
 ```sh

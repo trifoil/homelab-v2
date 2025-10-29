@@ -25,14 +25,11 @@ echo "Docker installed ..."
 
 # Setup storage directories
 echo "Setting up storage directories..."
-sudo mkdir -p /storage/primary/traefik
 sudo mkdir -p /storage/primary/portainer/data
 sudo mkdir -p /storage/dockge/{data,stacks,watchtower}
 sudo mkdir -p /storage/secondary
 
-# Setup Traefik
-echo "Setting up Traefik..."
-sudo bash setup_traefik.sh
+# No TLS setup required for HTTP-only Traefik
 
 # Start the Server
 echo "Starting services..."
@@ -44,11 +41,10 @@ echo "Setup complete!"
 echo ""
 echo "Access the services at:"
 echo "  - Traefik Dashboard: http://localhost:8080"
-echo "  - Dockge: http://localhost:5001"
-echo ""
-echo "After DNS is configured, access via:"
-echo "  - Traefik: https://traefik.docker.localhost"
-echo "  - Dockge: https://dockge.docker.localhost"
+echo "  - Dockge (via Traefik): http://dockge.docker.localhost"
+echo "  - Dockge (direct): http://localhost:5001"
+echo "  - Portainer (via Traefik): http://portainer.docker.localhost"
+echo "  - Portainer (direct): http://localhost:9000"
 echo "=============================================="
 
 read -n 1 -s -r -p "Press any key to continue..."

@@ -23,11 +23,8 @@ sudo systemctl status docker
 
 echo "Docker installed ..."
 
-# Setup storage directories
-echo "Setting up storage directories..."
-sudo mkdir -p /storage/primary/portainer/data
-sudo mkdir -p /storage/dockge/{data,stacks,watchtower}
-sudo mkdir -p /storage/secondary
+echo "Setting up storage directories and permissions..."
+sudo bash setup_storage_permissions.sh
 
 # No TLS setup required for HTTP-only Traefik
 

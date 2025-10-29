@@ -32,8 +32,8 @@ services:
       - 5001:5001
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /storage/dockge/data:/app/data
-      - /storage/dockge/stacks:/opt/stacks
+      - /storage/dockge/data:/app/data:z
+      - /storage/dockge/stacks:/opt/stacks:z
     environment:
       - DOCKGE_STACKS_DIR=/opt/stacks
     labels:

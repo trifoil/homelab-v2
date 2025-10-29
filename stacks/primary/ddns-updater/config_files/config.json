@@ -1,0 +1,20 @@
+{
+    "settings": [
+        {
+            "provider": "$dns_provider",
+            "domain": "$root_domain",
+            "host": "@",
+            "username": "$username",
+            "password": "$api_key",
+            "ip_version": "ipv4"
+        },
+        {
+            "provider": "$dns_provider",
+            "domain": "$root_domain",
+            "host": "$subdomain",
+            "username": "$username",
+            "password": "$api_key",
+            "ip_version": "ipv4"
+        }
+    ]
+}

@@ -95,7 +95,7 @@ services:
     ports: 
       - 9445:800/tcp
     volumes:
-      /storage/primary/ddns-updater/data:/updater/data
+      - /storage/primary/ddns-updater/data:/updater/data
     environment:
       - CONFIG_FILE=/updater/data/config.json
       - PERIOD=5m

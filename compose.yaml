@@ -109,8 +109,9 @@ services:
     privileged: false
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      - "traefik.enable=true"
 
-      
+
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower-primary

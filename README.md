@@ -26,7 +26,6 @@ the storage has to be in /storage/primary/<servicename>
   - Portainer: `https://localhost:9443` (default) or `http://portainer.docker.localhost` / `http://localhost:9000`
   - FileBrowser: `http://filebrowser.docker.localhost` or `http://localhost:8086`
 
-
 ```sh
 sudo dnf install git -y
 git clone https://github.com/trifoil/homelab-v2

@@ -110,7 +110,7 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
       - "traefik.enable=true"
-    privileged: true
+    #privileged: true
 
   watchtower:
     image: containrrr/watchtower

@@ -7,6 +7,8 @@ echo "Configuring /storage permissions and SELinux labels..."
 # Ensure base directories exist
 mkdir -p /storage/primary/portainer/data
 mkdir -p /storage/primary/filebrowser/config
+mkdir -p /storage/primary/ddns-updater
+mkdir -p /storage/primary/ddns-updater/data
 mkdir -p /storage/dockge/{data,stacks,watchtower}
 mkdir -p /storage/secondary
 
@@ -19,6 +21,7 @@ chmod -R 775 /storage/secondary || true
 chmod -R 775 /storage/dockge || true
 chmod -R 775 /storage/primary/portainer || true
 chmod -R 775 /storage/primary/filebrowser || true
+chmod -R 775 /storage/primary/ddns-updater || true
 
 # SELinux context for Docker. Prefer :z on mounts; still normalize context here if tools exist
 if command -v restorecon >/dev/null 2>&1; then

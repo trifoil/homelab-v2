@@ -1,7 +1,7 @@
 services:
   traefik:
     image: traefik:v3.4
-    container_name: traefik
+    container_name: traefik-primary
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -24,7 +24,7 @@ services:
 
   dockge:
     image: louislam/dockge:1
-    container_name: dockge
+    container_name: dockge-primary
     restart: unless-stopped
     networks:
       - proxy
@@ -46,7 +46,7 @@ services:
 
   portainer:
     image: portainer/portainer-ce:latest
-    container_name: portainer
+    container_name: portainer-primary
     restart: unless-stopped
     networks:
       - proxy
@@ -67,7 +67,7 @@ services:
 
   filebrowser:
     image: filebrowser/filebrowser:latest
-    container_name: file-manager
+    container_name: file-manager-primary
     restart: unless-stopped
     user: root
     privileged: true
@@ -86,9 +86,30 @@ services:
       - "traefik.http.routers.filebrowser.service=filebrowser"
       - "traefik.http.services.filebrowser.loadbalancer.server.port=80"
 
+  ddns-updater:
+    image: qmcgaw/ddns-updater
+    container_name: ddns-updater-primary
+    networks: 
+      - proxy
+    ports: 
+      9445:800/tcp
+    volumes:
+      /storage/primary/ddns-updater/data:/updater/data
+    environment:
+      - CONFIG_FILE=/updater/data/config.json
+      - PERIOD=5m
+      - IP_METHOD=cycle
+      - IPV4_METHOD=cycle
+      - IPV6_METHOD=cycle
+      - HTTP_TIMEOUT=10s
+      - LISTENING_PORT=9445
+      - ROOT_URL=/
+    restart: always
+    privileged: false
+
   watchtower:
     image: containrrr/watchtower
-    container_name: watchtower-dockge
+    container_name: watchtower-primary
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

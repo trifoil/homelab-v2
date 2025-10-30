@@ -30,7 +30,7 @@ sudo bash setup_storage_permissions.sh
 
 # Start the Server
 echo "Starting services..."
-docker compose --project-name "dockge" up -d
+docker compose --project-name "primary" up -d
 
 echo ""
 echo "=============================================="

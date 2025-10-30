@@ -21,6 +21,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      
 
   dockge:
     image: louislam/dockge:1
@@ -106,7 +107,10 @@ services:
       - ROOT_URL=/
     restart: always
     privileged: false
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
+      
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower-primary

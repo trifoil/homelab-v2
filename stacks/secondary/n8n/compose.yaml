@@ -1,5 +1,5 @@
 services:
-  nginx:
+  n8n:
     image: docker.n8n.io/n8nio/n8n
     restart: unless-stopped
     user: "1000:1000"

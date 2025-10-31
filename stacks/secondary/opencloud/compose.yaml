@@ -34,9 +34,9 @@ services:
       - OC_PASSWORD_POLICY_MIN_DIGITS=${OC_PASSWORD_POLICY_MIN_DIGITS:-1}
       - OC_PASSWORD_POLICY_MIN_SPECIAL_CHARACTERS=${OC_PASSWORD_POLICY_MIN_SPECIAL_CHARACTERS:-1}
     volumes:
-      - ${OC_CONFIG_DIR}:/etc/opencloud
-      - ${OC_DATA_DIR}:/var/lib/opencloud
-      - ./opencloud/secondary/opencloud/banned-password-list.txt:/etc/opencloud/banned-password-list.txt
+      - ${OC_CONFIG_DIR}:/etc/opencloud:z
+      - ${OC_DATA_DIR}:/var/lib/opencloud:z
+      - ./opencloud/secondary/opencloud/banned-password-list.txt:/etc/opencloud/banned-password-list.txt:z
     restart: always
     networks:
       - opencloud-net

@@ -23,6 +23,26 @@ echo "Setting setgid and permissions on /storage/secondary..."
 chmod -R 2775 /storage/secondary || true
 find /storage/secondary -type d -exec chmod 2775 {} \; || true
 
+# Ensure ACLs are available and set permissive defaults so containers can write even if Dockge
+# or other tools create new directories as root after this script runs.
+if ! command -v setfacl >/dev/null 2>&1; then
+  if command -v dnf >/dev/null 2>&1; then
+    dnf -y install acl || true
+  elif command -v apt-get >/dev/null 2>&1; then
+    apt-get update -y && apt-get install -y acl || true
+  fi
+fi
+
+if command -v setfacl >/dev/null 2>&1; then
+  echo "Applying ACLs on /storage/secondary (u:1000 rwx; others rwx; and defaults)..."
+  # Effective ACLs
+  setfacl -R -m u:1000:rwx /storage/secondary || true
+  setfacl -R -m o:rwx /storage/secondary || true
+  # Default ACLs for inheritance on newly created files/dirs
+  setfacl -R -m d:u:1000:rwx /storage/secondary || true
+  setfacl -R -m d:o:rwx /storage/secondary || true
+fi
+
 # Keep remaining permissions the same for primary and other areas
 chmod -R 775 /storage/dockge || true
 chmod -R 775 /storage/primary/portainer || true

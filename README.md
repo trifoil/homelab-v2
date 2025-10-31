@@ -3,7 +3,7 @@ Upgraded version of the homelab docker deployment
 
 ## Explanations
 
-### 1. Primary containers (primary-stack)
+### 1. Primary stack
 
 contains :
 
@@ -40,7 +40,7 @@ sudo ./docker_setup.sh
 - Generate self-signed TLS certificates for Traefik
 - Start Traefik, Dockge, and Watchtower
 
-### 2. Secondary container (all the other stacks)
+### 2. Secondary stacks
 
 The storage has to be in /storage/secondary/<stackname>/<servicename>
 

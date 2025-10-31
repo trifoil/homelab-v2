@@ -18,6 +18,8 @@ chown -R 1000:1000 /storage/primary || true
 # Fix: Set proper ownership for n8n directory
 echo "Setting ownership for n8n data directory..."
 chown -R 1000:1000 /storage/secondary/n8n/data || true
+chown -R 1000:1000 /storage/secondary || true
+
 
 # For other secondary stacks, keep generic permissions but ensure directories exist
 find /storage/secondary -type d -exec chmod 2775 {} \; || true

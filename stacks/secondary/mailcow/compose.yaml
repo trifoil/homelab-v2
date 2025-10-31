@@ -670,14 +670,74 @@ networks:
 
 volumes:
   vmail-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/vmail
   vmail-index-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/vmail-index
   mysql-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/mysql
   mysql-socket-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/mysql-socket
   redis-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/redis
   rspamd-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/rspamd
   postfix-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/postfix
   postfix-tlspol-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/postfix-tlspol
   crypt-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/crypt
   sogo-web-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/sogo-web
   sogo-userdata-backup-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/sogo-userdata-backup
   clamd-db-vol-1:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /storage/secondary/mailcow/clamd-db

@@ -93,7 +93,7 @@ services:
     networks: 
       - proxy
     ports: 
-      - 9445:800/tcp
+      - 9445:8000/tcp
     volumes:
       - /storage/primary/ddns-updater/data:/updater/data
     environment:
